@@ -53,5 +53,177 @@
 
   </script>
 
+  <div>
+    <input type="radio" name="gender" class="blind" id="man" value="man" checked="checked">
+    <label for="man">남</label>
+    <input type="radio" name="gender" class="blind" id="woman" value="woman">
+    <label for="woman">여</label>
+  </div>
+  <script>
+
+    /*
+      attribute
+      1. 태그에 명시된 속성이다.
+      2. 메소드
+        1) 가져오기 : getAttribute('속성')
+        2) 수정하기 : setAttribute('속성', 값)
+        3) 삭제하기 : removeAttribute('속성')
+    */
+    
+    var man = document.getElementById('man');
+
+    console.log('id', man.getAttribute('id'));
+    console.log('class', man.getAttribute('class'));
+    console.log('value', man.getAttribute('value'));
+    console.log('checked', man.getAttribute('checked'));
+
+    man.setAttribute('class', 'screen-out');
+    console.log(man);
+
+    man.removeAttribute('checked');
+    
+    /*
+      property
+      1. DOM 객체가 가지고 있는 속성이다.
+      2. [F12] - [Elements] - [Properties] 메뉴를 통해서 확인할 수 있다.
+      3. 호출 방식
+        1) 객체.property
+        2) 객체['property']
+    */
+    
+    var woman = document.getElementById('woman');
+
+    console.log('id', woman.id);
+    console.log('class', woman.className);
+    console.log('value', woman.value);
+    console.log('checked', woman.checked);
+
+    woman.className = 'screen-out';
+
+    console.log(woman);
+
+    /*
+                        |  attribute         |  property
+      ------------------|--------------------|-------------------
+      id="man"          |  id="man"          |  id: "man"
+      class="blind"     |  class="blind"     |  className: "blind"
+      checked="checked" |  checked="checked" |  checked: true
+    */
+
+  </script>
+
+  <div id="logo-wrap">
+    <a href="https://www.google.com/">
+      <img src="../assets/images/logo_google.png" width="100px">
+    </a>
+  </div>
+  <script>
+
+    // 연습. 네이버 링크와 네이버 로고로 바꾸기
+    var a = document.querySelector('#logo-wrap > a');
+    var img = document.querySelector('#logo-wrap img');
+    a.href = 'https://www.naver.com/';
+    img.src = '../assets/images/logo_naver.png';
+
+  </script>
+
+  <div id="title-wrap">
+    <h1 id="title">hello world</h1>
+  </div>
+  <script>
+
+    var titleWrap = document.getElementById('title-wrap');
+    
+    // 내부 텍스트
+    console.log(titleWrap.textContent);
+    titleWrap.textContent = '헬로 월드';
+
+    // 내부 요소
+    console.log(titleWrap.innerHTML);
+    titleWrap.innerHTML = '<h1>헬로 월드</h1>';
+
+  </script>
+
+  <div>
+    <h1 id="watch">
+      <span id="year"></span>년 
+      <span id="month"></span>월 
+      <span id="day"></span>일 
+      <span id="hour"></span>시 
+      <span id="minute"></span>분 
+      <span id="second"></span>초입니다.
+    </h1>
+  </div>
+  <style>
+    .normal {
+      color: teal;
+    }
+    .warning {
+      color: crimson;
+    }
+  </style>
+  <script>
+
+    function watch(){
+
+      var watch = document.getElementById('watch');
+      var spanYear = document.getElementById('year');
+      var spanMonth = document.getElementById('month');
+      var spanDay = document.getElementById('day');
+      var spanHour = document.getElementById('hour');
+      var spanMinute = document.getElementById('minute');
+      var spanSecond = document.getElementById('second');
+
+      setInterval(function(){
+
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = now.getMonth() + 1;
+        var day = now.getDate();
+        var hour = now.getHours();
+        var minute = now.getMinutes();
+        var second = now.getSeconds();
+
+        spanYear.textContent = year;
+        spanMonth.textContent = month.toString().padStart(2, '0');
+        spanDay.textContent = day.toString().padStart(2, '0');
+        spanHour.textContent = hour.toString().padStart(2, '0');
+        spanMinute.textContent = minute.toString().padStart(2, '0');
+        spanSecond.textContent = second.toString().padStart(2, '0');
+
+        if(second >= 50){
+          watch.setAttribute('class', 'warning');
+        } else {
+          watch.setAttribute('class', 'normal');
+        }
+
+      }, 1000)
+
+    }
+
+    watch();
+
+  </script>
+
+  <div>
+    <a id="google-link" href="https://www.google.com">Google</a>
+  </div>
+  <script>
+
+    /*
+      style 속성(property)
+      1. CSS 처리를 위한 속성이다.
+      2. inline 방식으로 CSS 가 처리된다. (JavaScript로 style 속성을 주면 기존 CSS는 덮어쓰기된다.)
+      3. 작성 방법
+        1) 객체.style.fontSize = '10px'
+        2) 객체.style['font-size'] = '10px'
+    */
+
+    var googleLink = document.getElementById('google-link');
+    googleLink.style.color = 'gray';
+    googleLink.style['text-decoration'] = 'none';
+
+  </script>
+
 </body>
 </html>
