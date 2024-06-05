@@ -30,7 +30,7 @@
       <label for="none">선택안함</label>
     </div>
 
-    <!-- 다중 선택 -->
+    <!-- 다중 선택 - 1 (각 선택 상자의 name 을 다르게 지정하는 방식, name 이 다르기 때문에 name 만으로 각 선택 상자를 식별할 수 있으므로 value 를 지정할 필요가 없다.) -->
     <div>
       <input type="checkbox" name="game" id="game">
       <label for="game">게임</label>
@@ -39,12 +39,13 @@
       <input type="checkbox" name="lego" id="lego">
       <label for="lego">레고</label>
     </div>
+    <!-- 다중 선택 - 2 (각 선택 상자의 name 을 통일하는 방식, name 이 같기 때문에 name 으로 각 선택 상자를 식별할 수 없으므로 value 를 지정해야 한다.) -->
     <div>
-      <input type="checkbox" name="game" id="game">
+      <input type="checkbox" name="hobbies" id="game" value="game">
       <label for="game">게임</label>
-      <input type="checkbox" name="travel" id="travel">
+      <input type="checkbox" name="hobbies" id="travel" value="travel">
       <label for="travel">여행</label>
-      <input type="checkbox" name="lego" id="lego">
+      <input type="checkbox" name="hobbies" id="lego" value="lego">
       <label for="lego">레고</label>
     </div>
 
@@ -69,11 +70,37 @@
     <input type="hidden" name="charencoding" value="utf-8">
     <input type="hidden" name="author" value="hong">
 
-    <hr>
-
     <!-- 서브밋 버튼 -->
     <button type="submit">전송</button>
 
+  </form>
+
+  <hr>
+
+  <!-- 파일 첨부 폼 형식 -->
+  <form method="post" enctype="multipart/form-data">
+
+    <div>
+      <input type="file" name="profile" multiple="multiple">
+    </div>
+
+    <div>
+      <button type="submit">전송</button>
+    </div>
+
+  </form>
+
+  <hr>
+
+  <!-- 네이버 검색 폼 -->
+  <style>
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
+  </style>
+  <form action="https://search.naver.com/search.naver" method="get">
+    <input type="text" name="query">
+    <button type="submit">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
   </form>
 
 </body>
