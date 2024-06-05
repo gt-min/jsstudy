@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <form method="get" action="/path/somewhere">
+
+    <!-- 입력 상자 -->
+    <div>
+      <input type="text" name="id" placeholder="아이디">
+    </div>
+    <div>
+      <input type="password" name="pw" placeholder="비밀번호">
+    </div>
+    <div>
+      <textarea name="intro"></textarea>
+    </div>
+
+    <!-- 단일 선택 -->
+    <div>
+      <input type="radio" name="gender" id="man" value="man">
+      <label for="man">남자</label>
+      <input type="radio" name="gender" id="woman" value="woman">
+      <label for="woman">여자</label>
+      <input type="radio" name="gender" id="none" value="none" checked="checked">
+      <label for="none">선택안함</label>
+    </div>
+
+    <!-- 다중 선택 -->
+    <div>
+      <input type="checkbox" name="game" id="game">
+      <label for="game">게임</label>
+      <input type="checkbox" name="travel" id="travel">
+      <label for="travel">여행</label>
+      <input type="checkbox" name="lego" id="lego">
+      <label for="lego">레고</label>
+    </div>
+    <div>
+      <input type="checkbox" name="game" id="game">
+      <label for="game">게임</label>
+      <input type="checkbox" name="travel" id="travel">
+      <label for="travel">여행</label>
+      <input type="checkbox" name="lego" id="lego">
+      <label for="lego">레고</label>
+    </div>
+
+    <!-- 목록에서 선택 -->
+    <div>
+      <select name="region">
+        <option value="02">02</option>
+        <option value="032">032</option>
+        <option value="031">031</option>
+      </select>
+    </div>
+
+    <!-- 목록에서 선택 + 직접 입력 -->
+    <input type="text" name="host" list="host">
+    <datalist id="host">
+      <option>naver.com</option>
+      <option>kakao.com</option>
+      <option>gmail.com</option>
+    </datalist>
+
+    <!-- 정해진 값 -->
+    <input type="hidden" name="charencoding" value="utf-8">
+    <input type="hidden" name="author" value="hong">
+
+    <hr>
+
+    <!-- 서브밋 버튼 -->
+    <button type="submit">전송</button>
+
+  </form>
+
+</body>
+</html>
