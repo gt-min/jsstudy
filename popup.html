@@ -12,7 +12,19 @@
   <h1 style="text-align: center;">팝업</h1>
   <div style="height: 400px">
     <div id="parent-msg"></div>
+    <div>
+      <input type="text" id="child-msg">
+      <button id="send-btn">부모에게전송</button>
+    </div>
   </div>
+  <script>
+
+    document.getElementById('send-btn').addEventListener('click', function(evt){
+      // parent's <div id="child-msg"> ← child's <input id="child-msg">
+      opener.document.getElementById('child-msg').textContent = document.getElementById('child-msg').value;
+    })
+
+  </script>
 
   <hr>
 

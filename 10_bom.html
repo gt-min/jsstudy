@@ -113,6 +113,7 @@
   <div>
     <input type="text" id="parent-msg">
     <button id="send-btn">팝업으로전송</button>
+    <div id="child-msg"></div>
   </div>
 </div>
 <script>
@@ -148,7 +149,7 @@
 
   // 팝업으로전송
   function sendPopup(){
-    
+
     // popup.document.getElementById('parent-msg') 인식을 위해서 popup 창의 본문을 모두 읽은 뒤 코드를 처리하는 load 이벤트가 필요하다.
 
     /* 표준 이벤트 모델
