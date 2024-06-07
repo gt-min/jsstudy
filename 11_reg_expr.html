@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    /*
+      정규식(regular expression)
+
+      1. 어떤 문자열이 특정 패턴을 가지고 있는지 확인하기 위한 표현식이다.
+      2. JavaScript 정규식 표현 방법
+        /정규식/
+      3. JavaScript 정규식 메소드
+        /정규식/.test(문자열) : 정규식 패턴을 가지고 있으면 true 반환, 아니면 false 반환
+    */
+  </script>
+
+  <script>
+    /*
+      정규식 메타 문자
+      
+      1. 정규식에서 특별한 의미를 가진 문자를 의미한다.
+      2. 주요 메타 문자
+        1) .
+          (1) 모든 단일문자
+          (2) b.at : baat, bbat, bcat, bdat, ... / 불가 bat, baaat
+        2) *
+          (1) 0개 이상의 반복 문자
+          (2) goo* : go, god, good, goood, ...
+        3) +
+          (1) 1개 이상의 반복 문자
+          (2) goo+ : goo, good, goood, ...
+        4) ^
+          (1) 시작이 일치하는 문자
+          (2) ^a   : app, apple, asia, africa, ...
+        5) $
+          (1) 끝이 일치하는 문자
+          (2) end$ : end, the end, ... / 불가 ending
+        6) ?
+          (1) 0개 이상의 문자
+          (2) colou?r : color, colour
+        7) ()
+          (1) 괄호 내의 문자를 문자 패턴으로 간주 (그룹)
+          (2) (app)A? : appA, appappA, appappappA, ...
+        8) |
+          (1) 또는
+          (2) a(b|c) : ab, ac
+        9) \
+          (1) 이스케이프, 역슬래시 뒤에 오는 메타 문자를 일반 문자로 간주
+          (2) \*, \., \?, ...
+        10) {m}
+          (1) 정확히 m개 문자 (0 <= m <= 255)
+          (2) a{3} : aaa
+        11) {m,}
+          (1) m개 이상 문자 (0 <= m <= 255)
+          (2) a{3,} : aaa, aaaa, aaaaa, ...
+        12) {m,n}
+          (1) m개 이상 n개 이하 문자 (0 <= m <= 255)
+          (2) a{2,3} : aa, aaa
+    */
+  </script>
+
+</body>
+</html>
