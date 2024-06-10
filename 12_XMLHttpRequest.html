@@ -40,5 +40,125 @@
 
   </script>
 
+  <div id="div1">
+    <button type="button" id="btn1">요청1</button>
+    <div id="contents1"></div>
+  </div>
+  <script>
+
+    // Fake API : https://thetestrequest.com
+
+    function ex1(){
+
+      /* 1. 비동기 통신을 수행하는 JavaScript 객체 생성하기 */
+      var xhr = new XMLHttpRequest();
+
+      /* 2. 요청 생성하기 */
+      /*
+        open(RequestMethod, URL, [Sync/Async], ...)
+          RequestMethod : GET, POST, PUT, DELETE, ...
+          URL           : Server URL
+          Sync/Async    : Sync(false), Async(true) - default
+      */
+      xhr.open('GET', 'https://thetestrequest.com/authors', true);
+
+      /* 3. 요청 보내기 */
+      xhr.send();
+
+      /* 4. 서버 응답을 체크하는 이벤트 리스너 작성 */
+      xhr.addEventListener('readystatechange', function(evt){
+
+        /*
+          1) readyState 속성 (property)
+            (1) 0 : 클라이언트만 존재, UNSENT
+            (2) 1 : 요청 생성, OPENED
+            (3) 2 : 요청 전송, HEADERS_RECEIVED
+            (4) 3 : 응답 받는 중, LOADING
+            (5) 4 : 완료, DONE
+        */
+        /*
+          2) status 속성 (HTTP Status)
+            (1) 200 : 정상 응답
+            (2) 4xx : 클라이언트 측 오류
+            (3) 5xx : 서버 측 오류
+        */
+
+        if(xhr.readyState != XMLHttpRequest.DONE)
+          return;
+
+        if(xhr.status != 200) {
+          alert('응답 메시지 : ' + xhr.statusText);
+          return;
+        }
+
+        /*
+          3) 응답 데이터에 따른 속성(property) 선택
+            (1) JSON : 일반 텍스트로 처리, responseText
+            (2) XML  : XMLDocument로 처리, responseXML
+        */
+        var resData = xhr.responseText;  // String 타입의 텍스트 데이터
+        resData = JSON.parse(resData);   // Object 타입의 객체
+        
+        var str = '';
+        resData.forEach(function(author){
+          str += '<div class="author">';
+          str += '  <div>ID : ' + author.id + '</div>';
+          str += '  <div>NAME : ' + author.name + '</div>';
+          str += '  <div>EMAIL : ' + author.email + '</div>';
+          str += '  <div><a href="' + author.avatar + '" target="_blank">아바타</a></div>';
+          str += '  <div>CREATED_AT : ' + author.created_at + '</div>';
+          str += '  <div>UPDATED_AT : ' + author.updated_at + '</div>';
+          str += '</div>';
+        })
+
+        document.getElementById('contents1').innerHTML = str;
+
+      })
+
+    }
+
+    document.getElementById('btn1').addEventListener('click', ex1);
+
+  </script>
+
+  <div id="div2">
+    <button type="button" id="btn2">요청2</button>
+    <div id="contents2"></div>
+  </div>
+  <script>
+    
+    function ex2(){
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'https://thetestrequest.com/authors.xml');
+      xhr.send();
+      xhr.addEventListener('readystatechange', function(evt){
+        if(xhr.readyState != XMLHttpRequest.DONE)
+          return;
+        if(xhr.status != 200){
+          alert('응답 메시지 ' + xhr.statusText);
+          return;
+        }
+        var resData = xhr.responseXML;
+        var str = '';
+        var authors = resData.getElementsByTagName('object');
+        for(var i = 0; i < authors.length; i++){
+          str += '<div class="author">';
+          str += '  <div>ID : ' + authors[i].getElementsByTagName('id')[0].textContent + '</div>';
+          str += '  <div>NAME : ' + authors[i].getElementsByTagName('name')[0].textContent + '</div>';
+          str += '  <div>EMAIL : ' + authors[i].getElementsByTagName('email')[0].textContent + '</div>';
+          str += '  <div><a href="' + authors[i].getElementsByTagName('avatar')[0].textContent + '" target="_blank">아바타</a></div>';
+          str += '  <div>CREATED_AT : ' + authors[i].getElementsByTagName('created-at')[0].textContent + '</div>';
+          str += '  <div>UPDATED_AT : ' + authors[i].getElementsByTagName('updated-at')[0].textContent + '</div>';
+          str += '</div>';
+        }
+        document.getElementById('contents2').innerHTML = str;
+      });
+
+    }
+
+    document.getElementById('btn2').addEventListener('click', ex2);
+
+  </script>
+
 </body>
 </html>
