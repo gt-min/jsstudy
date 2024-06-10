@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+  /*
+    동기 통신(Synchronous)
+    1. 요청하고 응답 받을때까지 새로운 요청을 하지 않는 방식이다.
+    2. 개념
+      client           server
+          A  →→→→→→→→→→→→ A
+        ACK ←←←←←←←←←←←← A 성공
+          B  →→→→→→→→→→→→ B
+        NAK ←←←←←←←←←←←← B 실패
+          B  →→→→→→→→→→→→ B
+        ACK ←←←←←←←←←←←← B 성공
+          C  →→→→→→→→→→→→ C
+        ...
+  */
+  /*
+    비동기 통신(Asynchronous)
+    1. 응답을 기다리지 않고 새로운 요청을 보내는 방식이다.
+    2. 개념
+      client           server
+          A  →→→→→→→→→→→→ A
+          B  →→→→→→→→→→→→ B
+          C  →→→→→→→→→→→→ C
+          ACK ←←←←←←←←←←←← A 성공
+          NAK ←←←←←←←←←←←← B 실패
+          B  →→→→→→→→→→→→ B
+          ACK ←←←←←←←←←←←← B 성공
+        ...
+  */
+
+  </script>
+
+</body>
+</html>
