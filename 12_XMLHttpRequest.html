@@ -172,11 +172,35 @@
       1) serviceKey : 본인이 발급받은 인증키
       2) searchYear : 2022
       3) siDo : 인천광역시 2300
-      4) siGun : 부평구 2304
+      4) guGun : 부평구 2304
       5) type : json
       6) numOfRows : 10
       7) pageNo : 1
     */
+    
+    function ex3(){
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'http://apis.data.go.kr/B552061/AccidentDeath/getRestTrafficAccidentDeath?serviceKey=bEQBRPHjt0tZrc7EsL0T8usfsZ1%2BwT%2B5jqamBef%2FErC%2F5ZO6N7nYdRmrwR91bh5d3I1AQeY5qdbJOF6Kv0U1CQ%3D%3D&searchYear=2022&siDo=2300&guGun=2304&type=json&numOfRows=10&pageNo=1');
+      xhr.send();
+      xhr.addEventListener('readystatechange', function(evt){
+        if(xhr.readyState != XMLHttpRequest.DONE)
+          return;
+        if(xhr.status != 200){
+          alert('응답 메시지 ' + xhr.statusText);
+          return;
+        }
+        var resData = JSON.parse(xhr.responseText);
+        var str = '';
+        resData.items.item.forEach(function(item){
+          str += '<div class="item">';
+          str += '  <div>발생일자 : ' + item.occrrnc_dt + '</div>';
+          str += '  <div>발생인원 : ' + item.dth_dnv_cnt + '명</div>';
+          str += '</div>';
+        })
+        document.getElementById('contents3').innerHTML = str;
+      });
+    }
+    document.getElementById('btn3').addEventListener('click', ex3);
 
   </script>
 
