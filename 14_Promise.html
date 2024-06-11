@@ -144,8 +144,22 @@
   </div>
   <script>
 
-    const ex4 = ()=>{
-      
+    const ex4 = (url, option)=>{
+      const { method } = option;  // const method = option.method;
+      return new Promise((resolve, reject)=>{
+        const xhr = new XMLHttpRequest();
+        xhr.open(method, url);
+        xhr.send();
+        // load 이벤트 : XMLHttpRequest 가 수행한 작업(트랜잭션)이 성공했을 때 발생하는 이벤트
+        xhr.addEventListener('load', (evt)=>{
+          const authors = JSON.parse(xhr.responseText);
+          resolve(authors);
+        })
+        // error 이벤트 : XMLHttpRequest 가 수행한 작업(트랜잭션)이 실패했을 때 발생하는 이벤트
+        xhr.addEventListener('error', (evt)=>{
+          reject(xhr.statusText);
+        })
+      })
     }
 
     document.getElementById('btn4').addEventListener('click', (evt)=>{
