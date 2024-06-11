@@ -105,5 +105,61 @@
 
   </script>
 
+  <div id="div3">
+    <button type="button" id="btn3">ex3</button>
+  </div>
+  <script>
+
+    const ex3 = (url)=>{
+      return new Promise((resolve, reject)=>{
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.send();
+        xhr.addEventListener('readystatechange', (evt)=>{
+          if(xhr.readyState !== 4)
+            return;
+          if(xhr.status !== 200)
+            reject(xhr.statusText);
+            const authors = JSON.parse(xhr.responseText);
+            resolve(authors);
+        })
+      })
+    }
+
+    document.getElementById('btn3').addEventListener('click', (evt)=>{
+      ex3('https://thetestrequest.com/authors')
+      .then((resData)=>{
+        console.log(typeof resData);
+        console.log(resData);
+      })
+      .catch((statusText)=>{
+        alert(statusText);
+      })
+    })
+
+  </script>
+
+  <div id="div4">
+    <button type="button" id="btn4">ex4</button>
+  </div>
+  <script>
+
+    const ex4 = ()=>{
+      
+    }
+
+    document.getElementById('btn4').addEventListener('click', (evt)=>{
+      ex4('https://thetestrequest.com/authors', { method: 'GET' })
+      .then((resData)=>{
+        console.log(typeof resData);
+        console.log(resData);
+      })
+      .catch((statusText)=>{
+        alert(statusText);
+      })
+    })
+
+  </script>
+
 </body>
 </html>
